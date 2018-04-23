@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Gnomes</ion-title>
+  </ion-navbar>
+
+  <ion-searchbar
+      [(ngModel)]="searchInput"
+      [showCancelButton]="true"
+      (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list [virtualScroll]="items">
+
+    <ion-item *virtualItem="let item">
+      <ion-thumbnail item-start>
+        <img src="{{item.thumbnail}}">
+      </ion-thumbnail>
+      <h2>{{item.name}}</h2>
+      <p>Height: {{item.height}}</p>
+      <p>Age: {{item.age}}</p>
+      <ion-icon name="{{item.sex}}" item-end></ion-icon>
+      <button ion-button clear item-end (click)="itemTapped($event, item)">View</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

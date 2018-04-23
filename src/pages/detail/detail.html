@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Gnome detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="{{item.thumbnail}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.name}} ({{item.age}} years)
+      </ion-card-title>
+      <div><strong>Hair color:</strong> <span [style.backgroundColor]="item.hair_color.toLocaleLowerCase()">{{item.hair_color}}</span></div>
+      <p><strong>Height:</strong> {{item.height}}</p>
+      <p><strong>Weight:</strong> {{item.weight}}</p>
+      <p *ngIf="item.professions.length">
+        <strong>Profession ({{item.professions.length}}):</strong> {{item.professions.join(', ')}}
+      </p>
+      <div *ngIf="item.friends.length">
+        <strong>Friends ({{item.friends.length}}):</strong>
+        <ul>
+          <li *ngFor="let friend of item.friends">{{friend}}</li>
+        </ul>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
